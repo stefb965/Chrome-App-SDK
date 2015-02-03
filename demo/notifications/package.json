@@ -1,0 +1,23 @@
+{
+  "name": "box_notifications_extension",
+  "version": "0.0.0",
+  "description": "Chrome extension for getting notifications when an event occurs in your Box account.",
+  "main": "Gruntfile.js",
+  "directories": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/box/Chrome-App-SDK.git"
+  },
+  "author": "Box",
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-concat": "^0.2.4",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-eslint": "^0.6.0"
+  }
+}

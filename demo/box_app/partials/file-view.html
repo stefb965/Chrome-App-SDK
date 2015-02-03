@@ -1,0 +1,21 @@
+<div>
+    <div class="item-view-header">
+        <div box-breadcrumbs item="file"></div>
+    </div>
+    <div class="box-file-view-body" ng-if="!!file">
+        <div class="box-file-thumbnail"><span box-item-thumbnail item="file" thumbnail-size="thumbnailSize"></span></div>
+        <div>
+            <box-file-info name="Name"><span>{{file.name}}</span></box-file-info>
+            <box-file-info name="Size"><span>{{file.size | bytes}}</span></box-file-info>
+            <box-file-info name="Created"><span>{{file.created_at | date:mediumDate}} by {{file.created_by.name}}</span></box-file-info>
+            <box-file-info name="Modified"><span>{{file.modified_at | date:mediumDate}} by {{file.modified_by.name}}</span></box-file-info>
+        </div>
+        <div>
+            <div ng-repeat="action in actions">
+                <button type="button" ng-click="doAction(action)">{{action}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="item-view-footer">
+    </div>
+</div>

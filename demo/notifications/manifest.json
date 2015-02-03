@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "Box Notifications Extension for Chrome",
+	"version": "0.1.0",
+	"description": "Provides notifications when an event happens in your Box account.",
+	"icons": {
+        "16": "img/box_icon_16.png",
+    	"128": "img/box_cyan_128.png"
+	},
+	"minimum_chrome_version": "30",
+	"background": {
+  		"scripts": [
+            "build/box_notifications_extension.bower_components.js",
+            "bower_components/Box-Chrome-SDK/dist/Box-Chrome-SDK.js",
+            "scripts/eventPage.js"
+        ]
+	},
+	"permissions": [
+        "notifications",
+        "identity",
+        "storage",
+        "<all_urls>"
+    ]
+}

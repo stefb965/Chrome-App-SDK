@@ -1,0 +1,1 @@
+angular.module('json.patch', []).factory('jsonpatch', function() { return window.jsonpatch; });

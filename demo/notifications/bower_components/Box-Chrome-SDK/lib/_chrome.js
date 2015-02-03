@@ -1,0 +1,1 @@
+angular.module('chrome', []).factory('chrome', function() { return window.chrome; });

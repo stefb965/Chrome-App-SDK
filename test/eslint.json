@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "mocha": true
+    },
+    "globals": {
+        "chrome": false,
+        "angular": false,
+        "Rx": false,
+        "expect": false,
+        "inject": false,
+        "module": false,
+        "sinon": false,
+        "assert": false
+    },
+    "rules": {
+        "no-unused-expressions": false,
+        "quotes": false,
+        "camelcase": false
+    }
+}

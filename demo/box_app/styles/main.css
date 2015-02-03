@@ -1,0 +1,88 @@
+.item-view-header {
+    background: #267BB6;
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-bottom: 2px;
+}
+.item-view-body {
+    height: 95%;
+    overflow-y: auto;
+}
+.item-view-footer {
+    position: absolute;
+    bottom: 0;
+    background: rgba(225, 225, 225, 0.5);
+}
+
+.box-item-thumbnail {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+.box-item-body {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.box-item {
+    border-bottom: 1px solid gray;
+}
+.box-item:first-of-type {
+    border-top: 1px solid gray;
+}
+
+.box-item:hover {
+    background: #cccccc;
+}
+
+.box-item-body-title {
+    display: block;
+    padding: 0.2em;
+    font-weight: bold;
+}
+
+.box-item-body-size, .box-item-body-name {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+.box-breadcrumb {
+    cursor: pointer;
+}
+
+.box-file-info {
+    padding: 0.5em;
+    display: inline-block;
+}
+.box-file-info-left {
+    width: 25%;
+    text-align: right;
+    color: lightgray;
+}
+.box-file-info-right {
+    width: 70%;
+    text-align: left;
+}
+.box-file-thumbnail {
+    width: 100%;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.filedrag {
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+}
+
+.filedrag.hover {
+	color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}

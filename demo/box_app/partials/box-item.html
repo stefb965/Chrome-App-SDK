@@ -1,0 +1,8 @@
+<div class="box-item">
+    <div class="box-item-thumbnail"><span box-item-thumbnail item="item" thumbnail-size="thumbnailSize"></span></div>
+    <div class="box-item-body" ng-click="select()">
+        <span class="box-item-body-title">{{item.name}}</span>
+        <span class="box-item-body-size">{{item.size | bytes}}</span>
+        <span class="box-item-body-date">{{item.modified_at | date : 'mediumDate'}}</span>
+    </div>
+</div>

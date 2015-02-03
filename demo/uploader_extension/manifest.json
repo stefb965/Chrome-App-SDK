@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "Box Uploader Extension for Chrome",
+	"version": "0.1.0",
+	"description": "Adds Upload to Box option to web resources.",
+	"icons": {
+        "16": "img/box_icon_16.png",
+    	"128": "img/box_cyan_128.png"
+	},
+	"minimum_chrome_version": "30",
+	"background": {
+  		"scripts": [
+            "bower_components/Rx/dist/rx.lite.js",
+            "bower_components/Box-Chrome-SDK/lib/rx.extensions.js",
+            "scripts/eventPage.js"
+        ]
+	},
+	"permissions": [
+  		"tabs",
+    	"contextMenus",
+        "notifications",
+        "identity",
+        "storage",
+        "<all_urls>"
+    ],
+	"web_accessible_resources": [
+		"img/ajax-loader-large.gif",
+		"img/ajax-loader-small.gif",
+		"img/folder.jpg"
+	]
+}

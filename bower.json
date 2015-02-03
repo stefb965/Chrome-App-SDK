@@ -1,0 +1,38 @@
+{
+  "name": "box-chrome-sdk",
+  "version": "0.1.0",
+  "authors": [
+    {"name": "Jeff Meadows", "email": "jmeadows@box.com"},
+    {"name": "Box Open Source", "email": "oss@box.com"}
+  ],
+  "dependencies": {
+    "angular": "~1.2.19",
+    "Rx": "~2.2.27",
+    "moment": "~2.7.0",
+    "angular-rx": "~0.0.5",
+      "angular-bootstrap": "~0.11.0"
+  },
+  "main": [
+    "dist/Box-Chrome-SDK.js"
+  ],
+  "license": "Apache License 2.0",
+  "ignore": [
+    ".*",
+    "*.bat",
+    "*.md",
+    "*.txt",
+    "*.log",
+    "package.json",
+    "node_modules",
+    "bower_components",
+    "build",
+    "doc",
+    "demo",
+    "lib",
+    "src",
+    "test"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2.19"
+  }
+}

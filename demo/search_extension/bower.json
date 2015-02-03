@@ -1,0 +1,28 @@
+{
+  "name": "search_box_extension",
+  "version": "0.0.0",
+  "authors": [
+    "Jeffrey Meadows <jmeadows@box.com>"
+  ],
+  "description": "Chrome extension for searching Box from the omnibar.",
+  "keywords": [
+    "box",
+    "chrome",
+    "search"
+  ],
+  "license": "Apache 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Rx": "~2.2.27",
+    "moment": "~2.7.0",
+    "angular-rx": "~0.0.5",
+    "angular": "~1.2.19"
+  }
+}

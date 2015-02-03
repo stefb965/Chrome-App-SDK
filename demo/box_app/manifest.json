@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Box for Chrome",
+    "version": "0.1.0",
+    "description": "Box for Chrome.",
+    "icons": {
+        "128": "img/box_cyan_128.png"
+    },
+    "minimum_chrome_version": "37",
+    "permissions": [
+        {"fileSystem": ["write"]},
+        "identity",
+        "notifications",
+        "storage",
+        "https://*.box.com/*",
+        "https://*.boxcdn.com/*",
+        "https://*.boxcdn.net/*",
+        "https://*.boxcloud.com/*"
+    ],
+    "app": {
+        "background": {
+            "scripts": [
+                "scripts/main.js"
+            ]
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+	"manifest_version": 2,
+	"name": "Box Search for Chrome",
+	"version": "0.1.0",
+	"description": "Adds Search Box option to the omnibox.",
+	"icons": {
+        "16": "img/box_icon_16.png",
+    	"128": "img/box_cyan_128.png"
+	},
+	"minimum_chrome_version": "30",
+	"background": {
+  		"scripts": [
+            "build/search_box_extension.bower_components.js",
+            "bower_components/Box-Chrome-SDK/dist/Box-Chrome-SDK.js",
+            "scripts/eventPage.js"
+        ]
+	},
+    "omnibox": {
+        "keyword": "box"
+    },
+	"permissions": [
+        "identity",
+        "storage",
+        "tabs",
+        "<all_urls>"
+    ]
+}

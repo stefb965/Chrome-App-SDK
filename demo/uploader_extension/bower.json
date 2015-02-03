@@ -1,0 +1,29 @@
+{
+  "name": "upload_to_box_extension",
+  "version": "0.0.0",
+  "authors": [
+    "Jeffrey Meadows <jmeadows@box.com>"
+  ],
+  "description": "Chrome extension for adding an upload to Box context menu option.",
+  "keywords": [
+    "box",
+    "chrome",
+    "upload"
+  ],
+  "license": "Apache 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.11.0",
+    "Rx": "~2.2.27",
+    "moment": "~2.7.0",
+    "angular-rx": "~0.0.5",
+    "bootstrap-css-only": "~3.2.0"
+  }
+}

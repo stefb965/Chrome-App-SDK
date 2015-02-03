@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "chrome": false,
+        "angular": false,
+        "Rx": false
+    },
+    "rules": {
+        "brace-style": 2,
+        "func-style": [
+            2,
+            "declaration"
+        ],
+        "guard-for-in": 2,
+        "no-floating-decimal": 2,
+        "no-nested-ternary": 2,
+        "no-underscore-dangle": 0,
+        "quotes": [
+            2,
+            "single"
+        ],
+        "radix": 2,
+        "wrap-iife": 2,
+        "space-after-keywords": 2,
+        "valid-jsdoc": [
+            2,
+            {
+                "prefer": {
+                    "return": "returns"
+                }
+            }
+        ]
+    }
+}

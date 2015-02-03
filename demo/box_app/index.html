@@ -1,0 +1,21 @@
+<!doctype html>
+<html data-ng-app="box" data-ng-csp>
+    <head>
+        <meta charset="utf-8">
+        <title>Box</title>
+        
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+        <!-- endbower -->
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css" />
+        <!-- endbuild -->
+    </head>
+    <body data-ng-controller="boxController">
+        <div data-ng-view></div>
+        <script src="build/box_for_chrome.js"></script>
+
+        <script src="scripts/box.js"></script>
+    </body>
+</html>
