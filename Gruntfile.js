@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
+    var config = {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             options: {
@@ -72,30 +72,37 @@ module.exports = function(grunt) {
             }
         },
         karma: {
+            options: {
+                frameworks: ['mocha', 'sinon-chai'],
+                reporters: ['progress', 'coverage'],
+                preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
+                browsers: ['Chrome'],
+                singleRun: true,
+                customLaunchers: {
+                    Chrome_travis_ci: {
+                        base: 'Chrome',
+                        flags: ['--no-sandbox']
+                    }
+                }
+            },
             unit: {
                 options: {
-                    frameworks: ['mocha', 'sinon-chai'],
                     files: ['build/dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/unit/**/*.js'],
-                    reporters: ['progress', 'coverage'],
-                    preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
                     coverageReporter: {type: 'text'}
-                },
-                singleRun: true,
-                browsers: ['Chrome']
+                }
             },
             integration: {
                 options: {
-                    frameworks: ['mocha', 'sinon-chai'],
-                    files: ['dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/integration/**/*.js']
-                },
-                singleRun: true,
-                browsers: ['Chrome'],
-                reporters: ['progress', 'coverage'],
-                preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
-                coverageReporter: {type: 'text-summary'}
+                    files: ['dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/integration/**/*.js'],
+                    coverageReporter: {type: 'text-summary'}
+                }
             }
         }
-    });
+    };
+    if(process.env.TRAVIS){
+      config.karma.options.browsers = ['Chrome_travis_ci'];
+    }
+    grunt.initConfig(config);
 
     [
         'grunt-contrib-uglify',
