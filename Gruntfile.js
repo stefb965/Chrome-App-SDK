@@ -109,6 +109,11 @@ module.exports = function(grunt) {
     if(process.env.TRAVIS){
         config.karma.options.browsers = ['Chrome_travis_ci_sl'];
         config.karma.options.reporters.push('saucelabs');
+        config.karma.options.sauceLabs = {
+            connectOptions: {
+                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+            }
+        };
     }
     grunt.initConfig(config);
 
