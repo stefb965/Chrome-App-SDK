@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         bower_concat: {
             all: {
                 mainFiles: {
-                    'Rx': 'rx.all.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'build/<%= pkg.name %>.bower_components.js'
             }

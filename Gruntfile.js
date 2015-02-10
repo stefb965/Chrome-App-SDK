@@ -38,14 +38,14 @@ module.exports = function(grunt) {
         bower_concat: {
             all: {
                 mainFiles: {
-                    'Rx': 'rx.all.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'dist/<%= pkg.name %>.bower_components.js',
                 exclude: ['angular-mocks']
             },
             test: {
                 mainFiles: {
-                    'Rx': 'rx.all.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'build/dist/<%= pkg.name %>.bower_components.js'
             }
