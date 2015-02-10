@@ -79,9 +79,10 @@ module.exports = function(grunt) {
                 browsers: ['Chrome'],
                 singleRun: true,
                 customLaunchers: {
-                    Chrome_travis_ci: {
-                        base: 'Chrome',
-                        flags: ['--no-sandbox']
+                    Chrome_travis_ci_sl: {
+                        base: 'SauceLabs',
+                        browserName: 'chrome',
+                        version: '37'
                     }
                 }
             },
@@ -89,18 +90,25 @@ module.exports = function(grunt) {
                 options: {
                     files: ['build/dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/unit/**/*.js'],
                     coverageReporter: {type: 'text'}
+                },
+                sauceLabs: {
+                    testName: 'Chrome App SDK Unit Tests'
                 }
             },
             integration: {
                 options: {
                     files: ['dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/integration/**/*.js'],
                     coverageReporter: {type: 'text-summary'}
+                },
+                sauceLabs: {
+                    testName: 'Chrome App SDK Integration Tests'
                 }
             }
         }
     };
     if(process.env.TRAVIS){
-      config.karma.options.browsers = ['Chrome_travis_ci'];
+        config.karma.options.browsers = ['Chrome_travis_ci_sl'];
+        config.karma.options.reporters.push('saucelabs');
     }
     grunt.initConfig(config);
 
