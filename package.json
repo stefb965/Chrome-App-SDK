@@ -1,13 +1,13 @@
 {
   "name": "box-chrome-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Chrome App SDK for the Box V2 API",
   "main": "Gruntfile.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",

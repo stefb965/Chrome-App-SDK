@@ -1,6 +1,6 @@
 {
   "name": "box-chrome-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     {"name": "Jeff Meadows", "email": "jmeadows@box.com"},
     {"name": "Box Open Source", "email": "oss@box.com"}

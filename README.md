@@ -2,6 +2,8 @@ Chrome-App-SDK
 ==============
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
+[![Travis build status](https://travis-ci.org/box/box-chrome-sdk.png?branch=master)](https://travis-ci.org/box/box-chrome-sdk)
+[![NPM info](https://nodei.co/npm/box-chrome-sdk.png?downloads=true)](https://www.npmjs.com/package/box-chrome-sdk)
 
 Box V2 API SDK for Chrome apps and extensions written in AngularJS. With some effort, it can be used from node.js as well.
 
@@ -21,9 +23,9 @@ npm install box-chrome-sdk
 Quick Start
 -----------
 
-###Setup###
+### Setup
 
-####Make sure the following permissions are specified in your app's manifest:####
+#### Make sure the following permissions are specified in your app's manifest:
 
 ```json
 permissions: [
@@ -37,13 +39,13 @@ permissions: [
 ]
 ```
 
-####Include SDK and requirements javascript####
+#### Include SDK and requirements javascript
 ```
 <script src="Box-Chrome-SDK.bower_components.min.js"></script>
 <script src="Box-Chrome-SDK.min.js"></script>
 ```
 
-####Configure the SDK with your Box app's client ID and secret####
+#### Configure the SDK with your Box app's client ID and secret
 ```javascript
 angular.module('box.conf')
     .constant('clientSecret', 'uII-----------------------------')
@@ -56,7 +58,7 @@ angular.module('box.conf')
 angular.module('myModule', ['box.sdk']);
 ```
 
-####Require boxSdk as a dependency in your angular services or directives####
+#### Require boxSdk as a dependency in your angular services or directives
 
 ```javascript
 module.directive('myDirective', ['boxSdk', function(boxSdk) {
@@ -64,14 +66,14 @@ module.directive('myDirective', ['boxSdk', function(boxSdk) {
 }]);
 ```
 
-###Making API Calls###
+### Making API Calls
 
 Most functions in the SDK return [Rx Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md).
 Mastery of reactive programming, however, is not required to use these objects.
 
 To get at an API result, simply subscribe to the observable and read the result inside the callback.
 
-####Get a folder object
+#### Get a folder object
 
 ```javascript
 boxSdk.getFolder(0).subscribe(function(folder) {
@@ -81,7 +83,7 @@ boxSdk.getFolder(0).subscribe(function(folder) {
 // -> All Files
 ```
 
-####Search Box####
+#### Search Box
 
 ```javascript
 boxSdk.search('query text')
@@ -93,7 +95,7 @@ boxSdk.search('query text')
 // -> File -> Results Query
 ```
 
-###Device Pinning
+### Device Pinning
 
 Some Box enterprises enforce device pinning, and require that auth requests are accompanied by a device ID. Chrome doesn't support a device specific identifier, and that is by design.
 
@@ -120,27 +122,27 @@ http.config(['$httpProvider',function($httpProvider) {
 ```
 
 
-###Docs and examples###
+### Docs and examples
 
-####Search Box from OmniBox Example####
+#### Search Box from OmniBox Example
 [Example extension](demo/search_extension/README.md) showing how to use the SDK in an extension's background page.
 
-####Upload to Box Example####
+#### Upload to Box Example
 [Example extension](demo/uploader_extension/README.md) showing how to use the SDK in a content script.
 
-####Box Chrome App Example####
+#### Box Chrome App Example
 [Example packaged app](demo/box_app/README.md) showing how to use the SDK in a packaged app.
 
-####Node.js Example####
+#### Node.js Example
 [Example login script](demo/node/README.md) showing how to use the SDK in a node.js script.
 
-####Notifications Example####
+#### Notifications Example
 [Example events script](demo/notifications/README.md) showing how to use the SDK to monitor events.
 
-####Documentation####
+#### Documentation
 [Docs](doc/readme.md)
 
-###Building the SDK
+### Building the SDK
 
 Building the SDK requires Grunt.
 *If you are new to Grunt, you will find a lot of answers to your questions in their [getting started guide](http://gruntjs.com/getting-started).
@@ -152,12 +154,12 @@ bower install
 grunt
 ```
 
-###Running the tests
+### Running the tests
 ```
 grunt test
 ```
 
-###Contributing
+### Contributing
 
 See [CONTRIBUTING](blob/master.CONTRIBUTING.md).
 

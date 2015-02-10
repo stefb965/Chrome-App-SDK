@@ -24,6 +24,7 @@
     "Rx": "~2.2.27",
     "moment": "~2.7.0",
     "angular-rx": "~0.0.5",
-    "bootstrap-css-only": "~3.2.0"
+    "bootstrap-css-only": "~3.2.0",
+    "box-chrome-sdk": "~0.1.1"
   }
 }
