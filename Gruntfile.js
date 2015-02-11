@@ -92,7 +92,10 @@ module.exports = function(grunt) {
                     coverageReporter: {type: 'text'}
                 },
                 sauceLabs: {
-                    testName: 'Chrome App SDK Unit Tests'
+                    testName: 'Chrome App SDK Unit Tests',
+                    connectOptions: {
+                        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+                    }
                 }
             },
             integration: {
@@ -101,19 +104,17 @@ module.exports = function(grunt) {
                     coverageReporter: {type: 'text-summary'}
                 },
                 sauceLabs: {
-                    testName: 'Chrome App SDK Integration Tests'
+                    testName: 'Chrome App SDK Integration Tests',
+                    connectOptions: {
+                        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+                    }
                 }
             }
         }
     };
-    if(process.env.TRAVIS){
+    if (process.env.TRAVIS){
         config.karma.options.browsers = ['Chrome_travis_ci_sl'];
         config.karma.options.reporters.push('saucelabs');
-        config.karma.options.sauceLabs = {
-            connectOptions: {
-                tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
-            }
-        };
     }
     grunt.initConfig(config);
 

@@ -29,6 +29,9 @@ describe.only('box.sdk', function() {
                 }).join('&');
             };
         });
+        if (!window.chrome.runtime) {
+            window.chrome.runtime = {};
+        }
         module = angular.module('box.sdk.test', ['box.sdk', 'box.http', 'box.objects', 'rx.http', 'box.auth', 'chrome']);
         module.run(['boxHttp', 'chrome', 'redirectUri', function(_boxHttp_, _chrome_, redirectUri) {
             var stubStorage = {local: {get: angular.noop, set: angular.noop, remove: angular.noop}};

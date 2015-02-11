@@ -10,6 +10,9 @@ describe('chrome.identity', function() {
             mocks.stub(chrome.runtime, 'sendMessage');
             $provide.value('chrome', chrome);
         });
+        if (!window.chrome.runtime) {
+            window.chrome.runtime = {};
+        }
     });
     beforeEach(inject(function(_chromeIdentity_) {
         chromeIdentity = _chromeIdentity_;

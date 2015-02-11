@@ -258,6 +258,9 @@ describe('box.ui.directives', function() {
         var chromeRuntime, $compile;
         beforeEach(inject(function(_chrome_, _$rootScope_, _$compile_) {
             chromeRuntime = _chrome_.runtime;
+            if (!chromeRuntime) {
+                _chrome_.runtime = chromeRuntime = {};
+            }
             chromeRuntime.getURL = mocks.stub();
             provide.value('chrome', _chrome_);
             $compile = _$compile_;

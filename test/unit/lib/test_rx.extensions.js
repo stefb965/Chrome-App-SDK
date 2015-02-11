@@ -6,10 +6,15 @@ describe('rx.extensions', function() {
             mocks = sinon.sandbox.create();
             observer = mocks.spy();
             callback = mocks.stub();
+            if (!chrome.runtime) {
+                chrome.runtime = {};
+            }
         });
         afterEach(function() {
             mocks.restore();
-            chrome.runtime.lastError = undefined;
+            if (chrome.runtime) {
+                chrome.runtime.lastError = undefined;
+            }
         });
         it('should return an observable that calls the passed function', function() {
             callback.yields('foo');
