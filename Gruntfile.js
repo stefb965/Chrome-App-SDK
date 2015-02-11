@@ -61,6 +61,13 @@ module.exports = function(grunt) {
             }
         },
         clean: ['dist/*', 'build/*', 'doc/*'],
+        mkdir: {
+            all: {
+                options: {
+                    create: ['build']
+                }
+            }
+        },
         jsdox: {
             generate: {
                 options: {
@@ -131,11 +138,12 @@ module.exports = function(grunt) {
         'grunt-wrap',
         'grunt-contrib-clean',
         'grunt-jsdox',
-        'grunt-karma'
+        'grunt-karma',
+        'grunt-mkdir'
     ].forEach(function(gruntPackage) {
             grunt.loadNpmTasks(gruntPackage);
         });
 
-    grunt.registerTask('default', ['clean', 'eslint', 'wrap', 'concat', 'bower_concat:all', 'uglify', 'jsdox']);
+    grunt.registerTask('default', ['clean', 'mkdir', 'eslint', 'wrap', 'concat', 'bower_concat:all', 'uglify', 'jsdox']);
     grunt.registerTask('test', ['bower_concat:test', 'karma']);
 };
