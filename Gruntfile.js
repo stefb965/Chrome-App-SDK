@@ -113,6 +113,10 @@ module.exports = function(grunt) {
         }
     };
     if (process.env.TRAVIS){
+        if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+          console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.');
+          process.exit(1);
+        }
         config.karma.options.browsers = ['Chrome_travis_ci_sl'];
         config.karma.options.reporters.push('saucelabs');
     }
