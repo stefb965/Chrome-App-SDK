@@ -37,8 +37,8 @@ Quick Start
 
 #### Include SDK and requirements javascript
 
-    <script src="Box-Chrome-SDK.bower_components.min.js"></script>
-    <script src="Box-Chrome-SDK.min.js"></script>
+    <script src="box-chrome-sdk.bower_components.min.js"></script>
+    <script src="box-chrome-sdk.min.js"></script>
 
 #### Configure the SDK with your Box app's client ID and secret
 
