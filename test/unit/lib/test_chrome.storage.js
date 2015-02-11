@@ -8,6 +8,9 @@ describe('chrome.storage', function() {
             mocks.stub(chrome.storage.local);
             $provide.value('chrome', chrome);
         });
+        if (!window.chrome.runtime) {
+            window.chrome.runtime = {};
+        }
     });
     beforeEach(inject(function(_chromeStorage_) {
         chromeStorage = _chromeStorage_;

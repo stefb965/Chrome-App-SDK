@@ -10,8 +10,7 @@ module.exports = function(grunt) {
         bower_concat: {
             all: {
                 mainFiles: {
-                    'Rx': 'dist/rx.all.js',
-                    'Box-Chrome-SDK': 'dist/Box-Chrome-SDK.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'build/<%= pkg.name %>.bower_components.js',
                 exclude: ['rxjs']
@@ -19,7 +18,7 @@ module.exports = function(grunt) {
         },
         concat: {
             dist: {
-                src: ['<%= bower_concat.all.dest %>', 'bower_components/Box-Chrome-SDK/dist/Box-Chrome-SDK.js'],
+                src: ['<%= bower_concat.all.dest %>'],
                 dest: 'build/<%= pkg.name %>.js'
             }
         }

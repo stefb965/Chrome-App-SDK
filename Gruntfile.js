@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
+    var config = {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             options: {
@@ -38,14 +38,14 @@ module.exports = function(grunt) {
         bower_concat: {
             all: {
                 mainFiles: {
-                    'Rx': 'rx.all.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'dist/<%= pkg.name %>.bower_components.js',
                 exclude: ['angular-mocks']
             },
             test: {
                 mainFiles: {
-                    'Rx': 'rx.all.js'
+                    'Rx': 'dist/rx.all.js'
                 },
                 dest: 'build/dist/<%= pkg.name %>.bower_components.js'
             }
@@ -61,6 +61,13 @@ module.exports = function(grunt) {
             }
         },
         clean: ['dist/*', 'build/*', 'doc/*'],
+        mkdir: {
+            all: {
+                options: {
+                    create: ['build']
+                }
+            }
+        },
         jsdox: {
             generate: {
                 options: {
@@ -72,30 +79,55 @@ module.exports = function(grunt) {
             }
         },
         karma: {
+            options: {
+                frameworks: ['mocha', 'sinon-chai'],
+                reporters: ['progress', 'coverage'],
+                preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
+                browsers: ['Chrome'],
+                singleRun: true,
+                customLaunchers: {
+                    Chrome_travis_ci_sl: {
+                        base: 'SauceLabs',
+                        browserName: 'chrome',
+                        version: '37'
+                    }
+                }
+            },
             unit: {
                 options: {
-                    frameworks: ['mocha', 'sinon-chai'],
                     files: ['build/dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/unit/**/*.js'],
-                    reporters: ['progress', 'coverage'],
-                    preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
                     coverageReporter: {type: 'text'}
                 },
-                singleRun: true,
-                browsers: ['Chrome']
+                sauceLabs: {
+                    testName: 'Chrome App SDK Unit Tests',
+                    connectOptions: {
+                        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+                    }
+                }
             },
             integration: {
                 options: {
-                    frameworks: ['mocha', 'sinon-chai'],
-                    files: ['dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/integration/**/*.js']
+                    files: ['dist/<%= pkg.name %>.bower_components.js', 'lib/**/*.js', 'src/**/*.js', 'test/*.js', 'test/integration/**/*.js'],
+                    coverageReporter: {type: 'text-summary'}
                 },
-                singleRun: true,
-                browsers: ['Chrome'],
-                reporters: ['progress', 'coverage'],
-                preprocessors: {'lib/**/*.js': ['coverage'], 'src/**/*.js': ['coverage']},
-                coverageReporter: {type: 'text-summary'}
+                sauceLabs: {
+                    testName: 'Chrome App SDK Integration Tests',
+                    connectOptions: {
+                        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+                    }
+                }
             }
         }
-    });
+    };
+    if (process.env.TRAVIS){
+        if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+          console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.');
+          process.exit(1);
+        }
+        config.karma.options.browsers = ['Chrome_travis_ci_sl'];
+        config.karma.options.reporters.push('saucelabs');
+    }
+    grunt.initConfig(config);
 
     [
         'grunt-contrib-uglify',
@@ -106,11 +138,12 @@ module.exports = function(grunt) {
         'grunt-wrap',
         'grunt-contrib-clean',
         'grunt-jsdox',
-        'grunt-karma'
+        'grunt-karma',
+        'grunt-mkdir'
     ].forEach(function(gruntPackage) {
             grunt.loadNpmTasks(gruntPackage);
         });
 
-    grunt.registerTask('default', ['clean', 'eslint', 'wrap', 'concat', 'bower_concat:all', 'uglify', 'jsdox']);
+    grunt.registerTask('default', ['clean', 'mkdir', 'eslint', 'wrap', 'concat', 'bower_concat:all', 'uglify', 'jsdox']);
     grunt.registerTask('test', ['bower_concat:test', 'karma']);
 };

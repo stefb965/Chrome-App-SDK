@@ -8,6 +8,9 @@ describe('chrome.downloads', function() {
             mocks.stub(chrome.downloads, 'download');
             $provide.value('chrome', chrome);
         });
+        if (!window.chrome.runtime) {
+            window.chrome.runtime = {};
+        }
     });
     beforeEach(inject(function(_chromeDownloads_) {
         chromeDownloads = _chromeDownloads_;

@@ -14,7 +14,7 @@
   "license": "Apache 2.0",
   "dependencies": {
     "express": "^4.6.1",
-    "Box-Chrome-SDK": "*",
+    "box-chrome-sdk": "*",
     "angular": "^1.2.19",
     "rx": "^2.2.28",
     "moment": "^2.7.0",

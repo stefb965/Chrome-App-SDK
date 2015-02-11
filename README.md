@@ -2,6 +2,8 @@ Chrome-App-SDK
 ==============
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
+[![Travis build status](https://travis-ci.org/box/Chrome-App-SDK.png?branch=master)](https://travis-ci.org/box/Chrome-App-SDK)
+[![NPM info](https://nodei.co/npm/box-chrome-sdk.png?downloads=true)](https://www.npmjs.com/package/box-chrome-sdk)
 
 Box V2 API SDK for Chrome apps and extensions written in AngularJS. With some effort, it can be used from node.js as well.
 
@@ -9,155 +11,143 @@ Installing
 ----------
 
 ####bower
-```bash
-bower install box-chrome-sdk
-```
+
+    bower install box-chrome-sdk
 
 ####npm
-```bash
-npm install box-chrome-sdk
-```
+
+    npm install box-chrome-sdk
 
 Quick Start
 -----------
 
-###Setup###
+### Setup
 
-####Make sure the following permissions are specified in your app's manifest:####
+#### Make sure the following permissions are specified in your app's manifest:
 
-```json
-permissions: [
-    "downloads",
-    "identity",
-    "storage",
-    "https://*.box.com/*",
-    "https://*.boxcdn.com/*",
-    "https://*.boxcdn.net/*",
-    "https://*.boxcloud.com/*"
-]
-```
+    permissions: [
+        "downloads",
+        "identity",
+        "storage",
+        "https://*.box.com/*",
+        "https://*.boxcdn.com/*",
+        "https://*.boxcdn.net/*",
+        "https://*.boxcloud.com/*"
+    ]
 
-####Include SDK and requirements javascript####
-```
-<script src="Box-Chrome-SDK.bower_components.min.js"></script>
-<script src="Box-Chrome-SDK.min.js"></script>
-```
+#### Include SDK and requirements javascript
 
-####Configure the SDK with your Box app's client ID and secret####
-```javascript
-angular.module('box.conf')
-    .constant('clientSecret', 'uII-----------------------------')
-    .constant('clientId', 'i3p-----------------------------');
-```
+    <script src="box-chrome-sdk.bower_components.min.js"></script>
+    <script src="box-chrome-sdk.min.js"></script>
+
+#### Configure the SDK with your Box app's client ID and secret
+
+    angular.module('box.conf')
+        .constant('clientSecret', 'uII-----------------------------')
+        .constant('clientId', 'i3p-----------------------------');
 
 ####Add a dependency to box.sdk to your angular module####
 
-```javascript
-angular.module('myModule', ['box.sdk']);
-```
+    angular.module('myModule', ['box.sdk']);
 
-####Require boxSdk as a dependency in your angular services or directives####
+#### Require boxSdk as a dependency in your angular services or directives
 
-```javascript
-module.directive('myDirective', ['boxSdk', function(boxSdk) {
+    module.directive('myDirective', ['boxSdk', function(boxSdk) {
 
-}]);
-```
+    }]);
 
-###Making API Calls###
+### Making API Calls
 
 Most functions in the SDK return [Rx Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md).
 Mastery of reactive programming, however, is not required to use these objects.
 
 To get at an API result, simply subscribe to the observable and read the result inside the callback.
 
-####Get a folder object
+#### Get a folder object
 
-```javascript
-boxSdk.getFolder(0).subscribe(function(folder) {
-    console.log(folder.name);
-});
-
-// -> All Files
-```
-
-####Search Box####
-
-```javascript
-boxSdk.search('query text')
-    .subscribe(function(result) {
-        console.log(result.type + ' -> ' + result.name);
+    boxSdk.getFolder(0).subscribe(function(folder) {
+        console.log(folder.name);
     });
 
-// -> Folder -> Query 1
-// -> File -> Results Query
-```
+    // -> All Files
 
-###Device Pinning
+#### Search Box
+
+    boxSdk.search('query text')
+        .subscribe(function(result) {
+            console.log(result.type + ' -> ' + result.name);
+        });
+
+    // -> Folder -> Query 1
+    // -> File -> Results Query
+
+### Device Pinning
 
 Some Box enterprises enforce device pinning, and require that auth requests are accompanied by a device ID. Chrome doesn't support a device specific identifier, and that is by design.
 
 However, it should be possible to supply a device ID, either from an application/extension setting supplied by a user, or by Chrome [managed storage](http://www.chromium.org/administrators/).  Passing it with auth requests is as simple as:
 
-```javascript
-var http = angular.module('box.http'),
-    deviceId = getDeviceIdSomehow();
+    var http = angular.module('box.http'),
+        deviceId = getDeviceIdSomehow();
 
-http.factory('boxDeviceIdInterceptor',['$q', 'authUrl', function($q, authUrl){
-    return {
-        request: function(config) {
-            if (config.url.indexOf(authUrl) === 0) {
-                config.data.append('box_device_id', deviceId);
+    http.factory('boxDeviceIdInterceptor',['$q', 'authUrl', function($q, authUrl){
+        return {
+            request: function(config) {
+                if (config.url.indexOf(authUrl) === 0) {
+                    config.data.append('box_device_id', deviceId);
+                }
+                return config;
             }
-            return config;
-        }
-    };
-}]);
+        };
+    }]);
 
-http.config(['$httpProvider',function($httpProvider) {
-    $httpProvider.interceptors.push('boxDeviceIdInterceptor');
-}]);
-```
+    http.config(['$httpProvider',function($httpProvider) {
+        $httpProvider.interceptors.push('boxDeviceIdInterceptor');
+    }]);
 
 
-###Docs and examples###
+### Docs and examples
 
-####Search Box from OmniBox Example####
+#### Search Box from OmniBox Example
+
 [Example extension](demo/search_extension/README.md) showing how to use the SDK in an extension's background page.
 
-####Upload to Box Example####
+#### Upload to Box Example
+
 [Example extension](demo/uploader_extension/README.md) showing how to use the SDK in a content script.
 
-####Box Chrome App Example####
+#### Box Chrome App Example
+
 [Example packaged app](demo/box_app/README.md) showing how to use the SDK in a packaged app.
 
-####Node.js Example####
+#### Node.js Example
+
 [Example login script](demo/node/README.md) showing how to use the SDK in a node.js script.
 
-####Notifications Example####
+#### Notifications Example
+
 [Example events script](demo/notifications/README.md) showing how to use the SDK to monitor events.
 
-####Documentation####
+#### Documentation
+
 [Docs](doc/readme.md)
 
-###Building the SDK
+### Building the SDK
 
 Building the SDK requires Grunt.
 *If you are new to Grunt, you will find a lot of answers to your questions in their [getting started guide](http://gruntjs.com/getting-started).
 
 From the same directory as Gruntfile.js, type
-```
-npm install
-bower install
-grunt
-```
 
-###Running the tests
-```
-grunt test
-```
+    npm install
+    bower install
+    grunt
 
-###Contributing
+### Running the tests
+
+    grunt test
+
+### Contributing
 
 See [CONTRIBUTING](blob/master.CONTRIBUTING.md).
 

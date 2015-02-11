@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '0.10'
+- '0.11'
+
+before_script:
+- 'grunt'
+
+env:
+  global:
+  - secure: Oa7PhGYimFZ8W2OQFrInUp/tJ50JFEgMeAIjF8sXpI59rAmTBjagrDDnfjhJ+6XgeDzObxTgMe63ytFNiqQ2tPwoBAI4CwzkSLdrYYPmXH7YT23zK9/iwgFIAFiIiaDrEMDF7AeEYahZFF79XiZv1LpH/cvpb6hIFsobcLvWjT4=
+  - secure: aEqH6qPP0mdbClICNhu2lispWzHB1sjSHbORyaIXOZfZhrynGduFqipg4e47nM+ZPd7G3vlaJjWPA6ELBGl/JEd4yuUa4FWV8GH77GDzHEWAfvXdSNj4dcU0ZPrPUqHwg4FPoVVwgsxRvqRM7Di8GvdVEOQay6e2GQkaes4QAS0=

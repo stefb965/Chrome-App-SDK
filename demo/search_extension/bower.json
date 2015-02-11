@@ -23,6 +23,7 @@
     "Rx": "~2.2.27",
     "moment": "~2.7.0",
     "angular-rx": "~0.0.5",
-    "angular": "~1.2.19"
+    "angular": "~1.2.19",
+    "box-chrome-sdk": "~0.1.1"
   }
 }
