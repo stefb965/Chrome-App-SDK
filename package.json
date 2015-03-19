@@ -1,6 +1,6 @@
 {
   "name": "box-chrome-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Chrome App SDK for the Box V2 API",
   "main": "Gruntfile.js",
   "directories": {
