@@ -174,7 +174,7 @@ describe('BoxFile', function() {
             expect(observer).to.have.been.calledOnce.and.to.have.been.calledWithExactly(new Blob());
         });
 
-        it ('should include range header if range parameter specified', function() {
+        it('should include range header if range parameter specified', function() {
             boxHttp.get.returns(Rx.Observable.return(new Blob()));
 
             file.getContent({}, [1, 2]).subscribe(observer);
