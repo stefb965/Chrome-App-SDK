@@ -41,12 +41,14 @@ angular.module('box.objects').factory('BoxFile', [
             /**
              * Get the content of the file.
              * @param {Object} params Parameters related to file download. See https://developers.box.com/docs/#files-download-a-file
+             * @param {Array} range Can specify a byte range to download. Must have exactly 2 elements and range[0] <= range[1].
              * @returns {Observable} An observable containing the file content.
              */
-            getContent: function(params) {
+            getContent: function(params, range) {
                 return this.boxHttp.get(this.url() + '/content', {
                     params: params,
-                    responseType: 'blob'
+                    responseType: 'blob',
+                    headers: range ? {'Range': 'bytes=' + range[0] + '-' + range[1]} : {}
                 });
             },
             /**
